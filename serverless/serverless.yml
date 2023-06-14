@@ -151,7 +151,18 @@ functions:
               - Arn
           batchSize: 1
     timeout: 2
-  
+
+  emailErroCadastro:
+    handler: src/functions/consumers/trataErrosCadastroConsumer.trataErrosCadastroConsumer
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt:
+              - DlqCadastro
+              - Arn
+          batchSize: 1
+    timeout: 2
+
 custom:
   serverless-offline:
     httpPort: 3001
