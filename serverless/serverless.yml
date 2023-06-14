@@ -39,6 +39,7 @@ resources:
         QueueName: cadastro-dlq.fifo
         FifoQueue: true
         SqsManagedSseEnabled: false
+        MessageRetentionPeriod: 86400
 
 params:
   dev:
@@ -118,6 +119,7 @@ functions:
               - FilaCadastro
               - Arn
           batchSize: 1
+    timeout: 2
   
 custom:
   serverless-offline:
